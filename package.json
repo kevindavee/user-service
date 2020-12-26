@@ -12,7 +12,8 @@
     "migration:run": "ts-node -r ./src/module-alias.ts ./node_modules/typeorm/cli.js --config src/libs/typeorm/ormconfig-cli.ts migration:run",
     "migration:revert": "ts-node -r ./src/module-alias.ts ./node_modules/typeorm/cli.js --config src/libs/typeorm/ormconfig-cli.ts migration:revert",
     "test": "cross-env NODE_ENV=test jest --detectOpenHandles --verbose --runInBand ./tests/unit/.*\\.ts",
-    "test:watch": "cross-env NODE_ENV=test jest -i --watch ./tests/unit/.*\\.ts"
+    "test:watch": "cross-env NODE_ENV=test jest -i --watch ./tests/unit/.*\\.ts",
+    "test:integration": "cross-env NODE_ENV=test ts-node ./dockest.ts"
   },
   "author": "kevindavee1505@gmail.com",
   "license": "ISC",

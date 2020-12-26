@@ -98,6 +98,13 @@ with watch mode
 npm run test:watch
 ```
 
+### Running integration test
+
+```bash
+npm run test:integration
+```
+Make sure to shut down your development cluster when running integration test because of the development DB server is usnig the same port as the DB server for integration test.
+
 ## Database migration
 
 ### On first time setting up the DB

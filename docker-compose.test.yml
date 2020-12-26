@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  postgres-test:
+    image: 'postgres:10.7'
+    container_name: postgres-integration-test
+    environment:
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=user-service
+      - PGDATABASE=user-service
+      - PGRODATABASE=user-service
+      - PGUSER=test
+      - PGROUSER=test
+      - PGPASSWORD=test
+      - PGROPASSWORD=test
+    ports:
+      - 5432:5432
