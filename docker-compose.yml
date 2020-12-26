@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: 'postgres:10.7'
+    container_name: user-service-pg
+    environment:
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=user-service
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+
+  web:
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    depends_on:
+      - postgres
+    links:
+      - "postgres"
+    container_name: 'user-service'
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./:/app
