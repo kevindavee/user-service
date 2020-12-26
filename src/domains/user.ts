@@ -2,7 +2,7 @@ import { Entity, Index, PrimaryColumn, Column } from 'typeorm';
 import { Gender } from './gender';
 
 @Entity({ name: 'users'})
-@Index(['name'], { unique: false})
+@Index(['fullName'], { unique: false})
 export class User {
   @PrimaryColumn()
   id: string;

@@ -43,7 +43,7 @@ export const OrmConfig = {
   replication: {
     // read-write connection
     master: {
-      database: PGDATABASE || 'webhook-service',
+      database: PGDATABASE || 'user-service',
       host: PGHOST || 'localhost',
       port: PGPORT || 5432,
       username: PGUSER || 'test',
@@ -51,7 +51,7 @@ export const OrmConfig = {
     },
     slaves: [
       {
-        database: PGDATABASE || 'webhook-service',
+        database: PGDATABASE || 'user-service',
         host: PGROHOST || PGHOST || 'localhost',
         port: PGROPORT || PGPORT || 5432,
         username: PGROUSER || PGUSER || 'test',
