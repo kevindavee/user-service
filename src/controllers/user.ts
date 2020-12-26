@@ -45,7 +45,7 @@ export class UserController {
   }
 
   public async find(req: Request, res: Response, next: NextFunction) {
-    const id = req.path
+    const { id } = req.params
     const [result, err] = await this.userService.find(id);
     if (err) {
       return next(err);
@@ -94,8 +94,7 @@ export class UserController {
       gender,
       address
     } = req.body
-    const id = req.path;
-
+    const { id } = req.params;
     const [result, err] = await this.userService.update({
       id,
       fullName,
@@ -117,12 +116,12 @@ export class UserController {
   }
 
   public async delete(req: Request, res: Response, next: NextFunction) {
-    const id = req.path
+    const { id } = req.params;
     const err = await this.userService.delete(id);
     if (err) {
       return next(err);
     }
 
-    return res.status(204)
+    return res.status(204).end();
   }
 }

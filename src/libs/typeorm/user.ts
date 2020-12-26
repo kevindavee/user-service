@@ -60,16 +60,20 @@ export class UserRepo {
 
   async delete(id: string): Promise<Error> {
     try {
-      const result = await this.repo.update(id, {
+      const result = await this.repo.update({
+        id,
+        isSoftDeleted: false,
+      }, {
         isSoftDeleted: true,
-        updatedAt: true,
+        updatedAt: new Date(),
       });
 
-      if (result.affected == 0) {
+      if (!result.affected || result.affected == 0) {
         return new CustomError('DATA_NOT_FOUND_ERROR', 'Data doesn\'t exist', null, {
           id
         });
       }
+      return null;
     } catch (error) {
       return error;
     }
